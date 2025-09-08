@@ -18,4 +18,8 @@ public class PeliculaService {
     public List<PeliculaDto> obtenerTodo(){
         return this.peliculaRepository.obtenerTodo();
     }
+
+    public PeliculaDto buscarPorCodigo (Long codigo) {
+        return this.peliculaRepository.buscarPorCodigo(codigo);
+    }
 }
