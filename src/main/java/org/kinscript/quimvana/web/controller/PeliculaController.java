@@ -1,11 +1,12 @@
 package org.kinscript.quimvana.web.controller;
 
+import org.hibernate.result.Output;
+import org.kinscript.quimvana.dominio.dto.ModPeliculaDto;
 import org.kinscript.quimvana.dominio.dto.PeliculaDto;
 import org.kinscript.quimvana.dominio.service.PeliculaService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,13 +21,25 @@ public class PeliculaController {
     }
 
     @GetMapping
-    public List<PeliculaDto> obtenerPeliculas() {
-        return this.peliculaService.obtenerTodo();
+    public ResponseEntity<List<PeliculaDto>> obtenerPeliculas() {
+        return ResponseEntity.ok(peliculaService.obtenerTodo());
     }
 
     @GetMapping("/{codigo}")
-    public PeliculaDto buscarPorCodigo(@PathVariable Long codigo) {
-        return this.peliculaService.buscarPorCodigo(codigo);
+    public ResponseEntity<PeliculaDto> buscarPorCodigo(@PathVariable Long codigo) {
+        return ResponseEntity.ok(peliculaService.buscarPorCodigo(codigo));
     }
+
+    @PostMapping
+    public ResponseEntity<PeliculaDto> guadarPelicula(@RequestBody PeliculaDto peliculaDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.peliculaService.guardarPelicula(peliculaDto));
+    }
+
+    @PutMapping("/{codigo}")
+    public ResponseEntity<PeliculaDto> modificarPelicula(@PathVariable Long codigo, @RequestBody ModPeliculaDto modPelicula) {
+        return ResponseEntity.ok(this.peliculaService.modificarPelicula(codigo, modPelicula));
+    }
+
+
 
 }

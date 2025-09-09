@@ -1,5 +1,6 @@
 package org.kinscript.quimvana.dominio.service;
 
+import org.kinscript.quimvana.dominio.dto.ModPeliculaDto;
 import org.kinscript.quimvana.dominio.dto.PeliculaDto;
 import org.kinscript.quimvana.repository.PeliculaRepository;
 import org.springframework.stereotype.Service;
@@ -22,4 +23,13 @@ public class PeliculaService {
     public PeliculaDto buscarPorCodigo (Long codigo) {
         return this.peliculaRepository.buscarPorCodigo(codigo);
     }
+
+    public PeliculaDto guardarPelicula (PeliculaDto peliculaDto) {
+        return this.peliculaRepository.guardarPelicula(peliculaDto);
+    }
+
+    public PeliculaDto modificarPelicula(Long codigo, ModPeliculaDto modPelicula) {
+        return this.peliculaRepository.modificarPelicula(codigo, modPelicula);
+    }
+
 }

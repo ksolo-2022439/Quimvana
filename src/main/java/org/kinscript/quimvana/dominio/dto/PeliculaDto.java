@@ -13,5 +13,6 @@ public class PeliculaDto {
     private Gender gender;
     private LocalDate releaseDate;
     private Double rating;
-    private Boolean disponible;
+    private Boolean status;
+
 }

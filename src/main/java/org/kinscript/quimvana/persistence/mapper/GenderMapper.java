@@ -24,6 +24,7 @@ public class GenderMapper {
         };
     }
 
+    @Named("generarGenero")
     public static String generarGenero(Gender gender) {
         if (gender == null) return null;
 
