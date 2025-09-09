@@ -50,4 +50,10 @@ public class PeliculaEntityRepository implements PeliculaRepository {
         this.crudPeliculaEntity.save(pelicula);
         return this.peliculaMapper.toDto(pelicula);
     }
+
+    @Override
+    public void eliminarPelicula(Long codigo) {
+        PeliculaEntity pelicula = this.crudPeliculaEntity.findById(codigo).orElse(null);
+        crudPeliculaEntity.delete(pelicula);
+    }
 }

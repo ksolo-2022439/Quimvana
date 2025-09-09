@@ -32,4 +32,8 @@ public class PeliculaService {
         return this.peliculaRepository.modificarPelicula(codigo, modPelicula);
     }
 
+    public void eliminarPelicula (Long codigo) {
+        this.peliculaRepository.eliminarPelicula(codigo);
+    }
+
 }

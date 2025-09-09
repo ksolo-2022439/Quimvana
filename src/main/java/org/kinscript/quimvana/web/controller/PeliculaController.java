@@ -40,6 +40,9 @@ public class PeliculaController {
         return ResponseEntity.ok(this.peliculaService.modificarPelicula(codigo, modPelicula));
     }
 
-
-
+    @DeleteMapping("/{codigo}")
+    public ResponseEntity<Void> eliminarPelicula(@PathVariable Long codigo) {
+        this.peliculaService.eliminarPelicula(codigo);
+        return ResponseEntity.ok().build();
+    }
 }
