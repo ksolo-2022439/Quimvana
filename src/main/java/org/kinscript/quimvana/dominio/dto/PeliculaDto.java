@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 public class PeliculaDto {
+    private Integer id;
     private String title;
     private Integer duration;
     private Gender gender;

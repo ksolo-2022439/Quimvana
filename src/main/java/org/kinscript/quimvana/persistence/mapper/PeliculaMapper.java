@@ -1,5 +1,6 @@
 package org.kinscript.quimvana.persistence.mapper;
 
+import org.kinscript.quimvana.dominio.dto.ModPeliculaDto;
 import org.kinscript.quimvana.dominio.dto.PeliculaDto;
 import org.kinscript.quimvana.persistence.entity.PeliculaEntity;
 import org.mapstruct.*;
@@ -33,6 +34,7 @@ public interface PeliculaMapper {
         return BigDecimal.valueOf(rating);
     }
 
+    @Mapping(source = "idPelicula", target = "id")
     @Mapping(source = "titulo", target = "title")
     @Mapping(source = "duracion", target = "duration")
     @Mapping(source = "genero", target = "gender", qualifiedByName = "generarGender")
@@ -48,4 +50,11 @@ public interface PeliculaMapper {
     @Mapping(source = "status", target = "estado", qualifiedByName = "mapDisponibleToEstado")
     @Mapping(source = "rating", target = "calificacion", qualifiedByName = "mapRatingToCalificacion")
     PeliculaEntity toEntity(PeliculaDto dto);
+
+    @Mapping(source = "title", target = "titulo")
+    @Mapping(source = "releaseDate", target = "fechaEstreno")
+    @Mapping(source = "rating", target = "calificacion")
+    void modificarEntityFromDto(ModPeliculaDto mod, @MappingTarget PeliculaEntity entity);
+
+
 }

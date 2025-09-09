@@ -44,5 +44,6 @@ public class PeliculaController {
     public ResponseEntity<Void> eliminarPelicula(@PathVariable Long codigo) {
         this.peliculaService.eliminarPelicula(codigo);
         return ResponseEntity.ok().build();
+
     }
 }
